@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 23 mai 2013 22:24:46 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <joined-subclass name="com.gsa.metier.bo.Etudiant" extends="com.gsa.metier.bo.Utilisateur" table="ETUDIANT" lazy="false">
+        <key>
+            <column name="IDUTILISATEUR" />
+        </key>
+        <property name="cne" type="java.lang.String">
+            <column name="CNE" />
+        </property>
+        <property name="numeroInscription" type="int">
+            <column name="NUMEROINSCRIPTION" />
+        </property>
+        <many-to-one name="niveau" class="com.gsa.metier.bo.Niveau" fetch="join">
+            <column name="NIVEAU" />
+        </many-to-one>
+        <set name="absences" table="ABSENCE" inverse="false" lazy="true">
+            <key>
+                <column name="CNE" />
+            </key>
+            <one-to-many class="com.gsa.metier.bo.Absence" />
+        </set>
+        <set name="attestations" table="ATTESTATION" inverse="false" lazy="true">
+            <key>
+                <column name="CNE" />
+            </key>
+            <one-to-many class="com.gsa.metier.bo.Attestation" />
+        </set>
+    </joined-subclass>
+</hibernate-mapping>

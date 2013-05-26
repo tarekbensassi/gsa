@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 23 mai 2013 22:18:07 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+	<class name="com.gsa.metier.bo.Utilisateur" table="UTILISATEUR">
+		<id name="idUtilisateur" type="java.lang.Long">
+			<column name="IDUTILISATEUR" />
+			<generator class="increment" />
+		</id>
+		<discriminator column="TYPEUTILISATEUR" type="string" />
+		<property name="nom" type="java.lang.String">
+			<column name="NOM" />
+		</property>
+		<property name="prenom" type="java.lang.String">
+			<column name="PRENOM" />
+		</property>
+		<property name="dateNaissance" type="java.util.Date">
+			<column name="DATENAISSANCE" />
+		</property>
+		<property name="lieuNaissance" type="java.lang.String">
+			<column name="LIEUNAISSANCE" />
+		</property>
+		<property name="sexe" type="char">
+			<column name="SEXE" />
+		</property>
+		<property name="cin" type="java.lang.String">
+			<column name="CIN" />
+		</property>
+		<property name="tel" type="java.lang.String">
+			<column name="TEL" />
+		</property>
+		<property name="login" type="java.lang.String">
+			<column name="LOGIN" />
+		</property>
+		<property name="password" type="java.lang.String">
+			<column name="PASSWORD" />
+		</property>
+		<property name="etatCompte" type="int">
+			<column name="ETATCOMPTE" />
+		</property>
+		<property name="adresse" type="java.lang.String">
+			<column name="ADRESSE" />
+		</property>
+		<property name="email" type="java.lang.String">
+			<column name="EMAIL" />
+		</property>
+		<many-to-one name="role" class="com.gsa.metier.bo.Role"
+			fetch="join">
+			<column name="ROLE" />
+		</many-to-one>
+
+
+		<subclass>
+			<property name="cne" type="java.lang.String">
+				<column name="CNE" />
+			</property>
+			<property name="numeroInscription" type="int">
+				<column name="NUMEROINSCRIPTION" />
+			</property>
+			<many-to-one name="niveau" class="com.gsa.metier.bo.Niveau"
+				fetch="join">
+				<column name="NIVEAU" />
+			</many-to-one>
+			<set name="absences" table="ABSENCE" inverse="false" lazy="true">
+				<key>
+					<column name="CNE" />
+				</key>
+				<one-to-many class="com.gsa.metier.bo.Absence" />
+			</set>
+			<set name="attestations" table="ATTESTATION" inverse="false"
+				lazy="true">
+				<key>
+					<column name="CNE" />
+				</key>
+				<one-to-many class="com.gsa.metier.bo.Attestation" />
+			</set>
+		</subclass>
+
+	</class>
+</hibernate-mapping>
