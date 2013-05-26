@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 23 mai 2013 22:18:07 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.gsa.metier.bo.Niveau" table="NIVEAU">
+        <id name="idNiveau" type="java.lang.Long">
+            <column name="IDNIVEAU" />
+            <generator class="increment" />
+        </id>
+        <property name="libelleNiveau" type="java.lang.String">
+            <column name="LIBELLENIVEAU" />
+        </property>
+        <list name="matieres" inverse="false" table="MATIERE" lazy="true">
+            <key>
+                <column name="IDNIVEAU" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="com.gsa.metier.bo.Matiere" />
+        </list>
+    </class>
+</hibernate-mapping>

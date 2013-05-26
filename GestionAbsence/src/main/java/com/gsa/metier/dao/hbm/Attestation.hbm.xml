@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 23 mai 2013 22:18:07 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.gsa.metier.bo.Attestation" table="ATTESTATION">
+        <id name="idAttestation" type="java.lang.Long">
+            <column name="IDATTESTATION" />
+            <generator class="increment" />
+        </id>
+        <property name="dateDemande" type="java.util.Date">
+            <column name="DATEDEMANDE" />
+        </property>
+        <property name="etatAttestation" type="char">
+            <column name="ETATATTESTATION" />
+        </property>
+    </class>
+</hibernate-mapping>
