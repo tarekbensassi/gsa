@@ -1,0 +1,1 @@
+Il s’agit de réaliser une application de gestion d’absences des étudiants de l’ENSAH. Cette application a pour objectif de faciliter la saisie journalière des absences, la génération des statistiques et les avertissements liés aux absences des étudiants ainsi que la génération automatique des attestations de scolarité.
